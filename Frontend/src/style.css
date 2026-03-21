@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   Design Tokens – CSS Custom Properties
+   ========================================================= */
+:root {
+  /* Primary blue */
+  --color-primary:           #3b82f6;       /* blue-500 – lighter for text/icons */
+  --color-primary-solid:     #2563eb;       /* blue-600 – darker for buttons/bg  */
+  --color-primary-dark:      #1d4ed8;       /* blue-700 */
+  --color-primary-rgb:       37, 99, 235;   /* blue-600 RGB — für rgba() */
+
+  /* Accent */
+  --color-accent:            #06b6d4;       /* cyan-500 */
+  --color-accent-rgb:        6, 182, 212;
+
+  /* Backgrounds */
+  --color-bg-dark:           #0A0F1E;
+  --color-bg-dark2:          #0c1221;
+  --color-bg-card:           #0f172a;
+  --color-bg-card2:          #161B2E;
+
+  /* Glass surface */
+  --color-glass-bg:          rgba(22, 27, 46, 0.6);
+  --color-glass-border:      rgba(255, 255, 255, 0.05);
+}
+
+@layer base {
+  body {
+    @apply antialiased font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100;
+  }
+}
+
+/* =========================================================
+   Primary Color Utilities  (single source of truth)
+   ========================================================= */
+.text-primary {
+  color: #3b82f6;
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.border-primary {
+  border-color: var(--color-primary-solid);
+}
+.hover\:text-primary:hover {
+  color: var(--color-primary);
+}
+.hover\:bg-primary:hover {
+  background-color: var(--color-primary-solid);
+}
+.hover\:border-primary:hover {
+  border-color: var(--color-primary-solid);
+}
+.focus\:ring-primary:focus {
+  --tw-ring-color: var(--color-primary-solid);
+}
+.focus\:border-primary:focus {
+  border-color: var(--color-primary-solid);
+}
+.shadow-primary {
+  --tw-shadow-color: rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* =========================================================
+   Glassmorphism Surfaces
+   ========================================================= */
+.glass-nav {
+  background: rgba(10, 15, 30, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-glass-border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.glass-card:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.35);
+  box-shadow: 0 0 24px rgba(var(--color-primary-rgb), 0.12);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   Typography
+   ========================================================= */
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Header-specific gradient text (blue → indigo) */
+.gradient-text-header {
+  background: linear-gradient(135deg, var(--color-primary), #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.gradient-button {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-solid) 100%);
+  transition: filter 0.2s ease, transform 0.15s ease;
+}
+.gradient-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.gradient-button:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   Product Card
+   ========================================================= */
+.product-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+.product-card:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.22);
+  box-shadow:
+    0 2px 0 0 rgba(var(--color-primary-rgb), 0.08) inset,
+    0 20px 50px -10px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.10),
+    0 10px 80px -20px rgba(var(--color-primary-rgb), 0.22);
+}
+
+/* =========================================================
+   Form Elements
+   ========================================================= */
+input[type="range"] {
+  accent-color: var(--color-primary-solid);
+}
+input[type="text"]:focus,
+input[type="search"]:focus {
+  outline: none;
+  border-color: var(--color-primary-solid) !important;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* =========================================================
+   Layout & Background
+   ========================================================= */
+.gradient-mesh {
+  background-color: var(--color-bg-dark);
+  background-image:
+    radial-gradient(at 0% 0%,   rgba(var(--color-primary-rgb), 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(var(--color-accent-rgb),  0.10) 0px, transparent 50%);
+}
+
+/* =========================================================
+   Scroll Reveal Animations
+   ========================================================= */
+
+/* Base hidden state */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Variants */
+[data-reveal="fade-up"]      { transform: translateY(40px); }
+[data-reveal="fade-down"]    { transform: translateY(-40px); }
+[data-reveal="fade-left"]    { transform: translateX(-50px); }
+[data-reveal="fade-right"]   { transform: translateX(50px); }
+[data-reveal="zoom-in"]      { transform: scale(0.88); }
+[data-reveal="fade-in"]      { transform: none; }
+
+/* Visible state */
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none !important;
+}
+
+/* Hero entrance animation (auto-play on load) */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate {
+  opacity: 0;
+  animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BuySource - Premium Digital Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3325f4",
+                        "accent-start": "#6C63FF",
+                        "accent-end": "#4ECDC4",
+                        "background-light": "#f6f5f8",
+                        "background-dark": "#0A0F1E",
+                        "card-dark": "#161B2E",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-nav {
+            background: rgba(10, 15, 30, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(22, 27, 46, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(108, 99, 255, 0.4);
+            box-shadow: 0 0 20px rgba(108, 99, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #6C63FF, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #6C63FF 0%, #3325f4 100%);
+        }
+        .gradient-mesh {
+            background-color: #0A0F1E;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(108, 99, 255, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(78, 205, 196, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Sticky Nav Bar -->
+<nav class="fixed top-0 z-50 w-full glass-nav">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Logo -->
+<div class="flex items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-3xl gradient-text font-bold">bolt</span>
+<span class="text-2xl font-black tracking-tighter text-slate-900 dark:text-white">BuySource</span>
+</div>
+<!-- Search Bar -->
+<div class="hidden md:flex flex-1 max-w-xl mx-8">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-accent-start transition-colors">search</span>
+</div>
+<input class="block w-full pl-10 pr-24 py-2.5 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-accent-start focus:border-transparent transition-all outline-none text-sm" placeholder="Tìm kiếm source code, templates..." type="text"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-1">
+<button class="px-3 py-1 text-xs font-semibold text-slate-500 hover:text-white transition-colors border-l border-slate-700">Tất cả</button>
+</div>
+</div>
+</div>
+<!-- Auth Buttons -->
+<div class="flex items-center gap-4">
+<button class="hidden sm:block px-6 py-2 text-sm font-bold border border-slate-700 hover:border-accent-start hover:text-accent-start rounded-xl transition-all">Đăng nhập</button>
+<button class="px-6 py-2.5 text-sm font-bold text-white gradient-button rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">Đăng ký</button>
+</div>
+</div>
+<!-- Sub Nav -->
+<div class="hidden lg:flex items-center justify-center gap-8 py-3 border-t border-slate-200 dark:border-slate-800/50 text-sm font-medium text-slate-600 dark:text-slate-400">
+<a class="hover:text-accent-start transition-colors" href="#">Trang chủ</a>
+<a class="hover:text-accent-start transition-colors" href="#">Source Code</a>
+<a class="hover:text-accent-start transition-colors" href="#">Templates</a>
+<a class="hover:text-accent-start transition-colors" href="#">Plugins</a>
+<a class="hover:text-accent-start transition-colors" href="#">Services</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-44 pb-24 overflow-hidden gradient-mesh">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center max-w-4xl mx-auto">
+<h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-tight">
+                    Khám phá <span class="gradient-text">Source Code</span> Chất Lượng Cao
+                </h1>
+<p class="text-lg md:text-xl text-slate-400 mb-10 font-medium">
+                    Hơn 10,000+ sản phẩm từ các developer hàng đầu thế giới dành cho dự án của bạn.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+<button class="w-full sm:w-auto px-8 py-4 text-lg font-bold text-white gradient-button rounded-2xl shadow-xl shadow-primary/30 flex items-center justify-center gap-2">
+                        Khám phá ngay <span class="material-symbols-outlined">trending_flat</span>
+</button>
+<button class="w-full sm:w-auto px-8 py-4 text-lg font-bold border border-slate-700 hover:bg-slate-800 rounded-2xl transition-all">
+                        Bán sản phẩm
+                    </button>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-3xl font-black gradient-text mb-1">10,000+</div>
+<div class="text-xs uppercase tracking-widest text-slate-500 font-bold">Sản phẩm</div>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-3xl font-black gradient-text mb-1">5,000+</div>
+<div class="text-xs uppercase tracking-widest text-slate-500 font-bold">Developer</div>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-3xl font-black gradient-text mb-1">50,000+</div>
+<div class="text-xs uppercase tracking-widest text-slate-500 font-bold">Khách hàng</div>
+</div>
+<div class="glass-card p-6 rounded-2xl">
+<div class="text-3xl font-black gradient-text mb-1 flex items-center justify-center gap-1">4.9<span class="material-symbols-outlined text-yellow-400 text-2xl fill-1">star</span></div>
+<div class="text-xs uppercase tracking-widest text-slate-500 font-bold">Đánh giá</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Section -->
+<section class="py-24 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-extrabold mb-12 flex items-center gap-3">
+<span class="w-8 h-1 bg-accent-start rounded-full"></span>
+                Khám phá theo danh mục
+            </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+<!-- Source Code -->
+<div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center cursor-pointer group">
+<div class="w-14 h-14 rounded-xl bg-accent-start/10 flex items-center justify-center mb-4 text-accent-start group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">code</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Source Code</h3>
+<p class="text-sm text-slate-500">2,500+ items</p>
+</div>
+<!-- Templates -->
+<div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center cursor-pointer group">
+<div class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4 text-purple-500 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">dashboard_customize</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Templates</h3>
+<p class="text-sm text-slate-500">1,800+ items</p>
+</div>
+<!-- Plugins -->
+<div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center cursor-pointer group">
+<div class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-500 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">extension</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Plugins</h3>
+<p class="text-sm text-slate-500">1,200+ items</p>
+</div>
+<!-- UI Kits -->
+<div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center cursor-pointer group">
+<div class="w-14 h-14 rounded-xl bg-pink-500/10 flex items-center justify-center mb-4 text-pink-500 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">grid_view</span>
+</div>
+<h3 class="font-bold text-lg mb-1">UI Kits</h3>
+<p class="text-sm text-slate-500">900+ items</p>
+</div>
+<!-- Services -->
+<div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center cursor-pointer group">
+<div class="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 text-cyan-500 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">handyman</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Services</h3>
+<p class="text-sm text-slate-500">400+ items</p>
+</div>
+<!-- Themes -->
+<div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center cursor-pointer group">
+<div class="w-14 h-14 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4 text-orange-500 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">palette</span>
+</div>
+<h3 class="font-bold text-lg mb-1">Themes</h3>
+<p class="text-sm text-slate-500">1,100+ items</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Products -->
+<section class="py-24 bg-slate-50 dark:bg-[#080B16]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-extrabold mb-2">Sản phẩm nổi bật</h2>
+<p class="text-slate-500">Top các sản phẩm bán chạy nhất trong tuần qua</p>
+</div>
+<a class="text-accent-start font-bold flex items-center gap-1 hover:underline" href="#">
+                    Xem tất cả <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Product Card 1 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern web dashboard UI template preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw_GJBK0Nze4GoBYkecpF1nnIEs0jTfFGZVcaG9o3eOVBSozjZKwEmPtvX3zfeqtU7ViG00l8sI_k2cS_nwdvsXoZ3wA9e7vSO6VVrEfxaSCbCE2wxSgOEvYDIab3uwKHhdNY4qLJtqYjct5F-pmZzaQ4CiZU3DZiy3xxwi7SWW9AOewDQgXAQGM5_YuOu9sRkMFbaVOr7XCmym9i5yjXdscG1sHEI1FM98B5VDT9o6AiTfqSVunEzOuksrFypLPZqtlm0xw8XhG0"/>
+<div class="absolute top-3 left-3 px-3 py-1 bg-accent-start text-[10px] font-black uppercase tracking-wider text-white rounded-lg">Bestseller</div>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-0.5 bg-blue-500/10 text-blue-500 text-[10px] font-bold rounded">React</span>
+<span class="px-2 py-0.5 bg-cyan-500/10 text-cyan-500 text-[10px] font-bold rounded">Tailwind</span>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">SkyDash Premium Admin Template</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full border border-slate-700" data-alt="Developer profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbG1LT6zKKmQgbof_iLj9MFdovX720w1TYn7QfXK553pMXgPlMz-EfNiKgQXQOEXHObgKhJOAT2R2furMZuoZHcdpaikI_HKVwI745Juv698-dUkYQOISqO9YW9rC5lKSiuiMiyxAdM7LaemWtoA2t9KrkLs6rzPtUjrTOGmfr-f3-Vj5c9OCI5v0BD6USd3LGbZvepBfqYr1myVuozcAlyVU0QhmEGfeArQCIluEUHT9deSzpN_Q075i0qu4ytt1pODIvStfIu9s"/>
+<span class="text-sm text-slate-400">DevStudio</span>
+<div class="ml-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-yellow-400 fill-1">star</span>
+<span class="text-xs font-bold text-slate-300">4.9</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">499.000đ</span>
+<button class="text-xs font-bold text-accent-start hover:underline">Preview</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Advanced ecommerce analytic dashboard source code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpn4q0Uc_0sJLj8zJAwSZtz1bwCp9n1mrFfNJUnSNrfaAKNWuxJAF_kItFuCPpRUmZRZffMBaKRFj0FTp-Dda27erFI4JZ6RX1ALabb62isBBiCw6MiEsZFzVavNQMR5zmIBE1nM-_jtMYwOFjw-ikMK051H9h_bNtgsHkGnVug3yZ3SP1dcU4ilshZfPbKpshQ1O8Bxo9AETrX62YzR6tLP5YaTfZb5d4wOGLR651l408v_jWVa71epsvZIj555ABBngdnj9uFiU"/>
+<div class="absolute top-3 left-3 px-3 py-1 bg-accent-start text-[10px] font-black uppercase tracking-wider text-white rounded-lg">Bestseller</div>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded">Vue 3</span>
+<span class="px-2 py-0.5 bg-indigo-500/10 text-indigo-500 text-[10px] font-bold rounded">NodeJS</span>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">V-Store Marketplace Full Solution</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full border border-slate-700" data-alt="Female developer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCew8e-YQ4xlsgt0NKOv-xHyYosE6Hvb4YbMQI8Hee9yaW7WGSgrisdOHPFe5atHS8rBj_N5_kFqWAOLVcENxTRTMDQUmzQiNRqnQKuE9lkXCblE5bN5o2iZbRyEV2PKZ409WkMo5BuUOr9TPC1Ub9HBPfsrVLdRW1KEhdhK3PUBTKr9vwr7fORwryHftuXruF7nqlCcpwqGNidCmhK56yfHUVU3Ol7t3SXSH2JNUlmP9QgXj-RU_CEVb9MTsR9crUeeMLshnJP_nM"/>
+<span class="text-sm text-slate-400">SarahDev</span>
+<div class="ml-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-yellow-400 fill-1">star</span>
+<span class="text-xs font-bold text-slate-300">5.0</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">899.000đ</span>
+<button class="text-xs font-bold text-accent-start hover:underline">Preview</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Social media mobile app template design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdK4PpVR8AZMusWFBk7MI334QujmEHarl3KPlV41iTVpnTjC0fgJJv5s1oTUddus6WQ_8EWjSt0mUNiDG9ZOdi2UH1cbccEycsCx61seIZbR-SrLWYVPwmVzshAFEMSNIeR17bM1Hb_KSpXhDF0X-6KzRLgouddgSJVVyy5a1bly94DhfxF31lHKmNKlEbdrh2LU-Oj9xYncUi9bjj1nfkgihmhUKy3Zpcs2TyU-v4o82q192_FZSpPWyLdgqEzMOTA7kgzKk5ay4"/>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-0.5 bg-blue-400/10 text-blue-400 text-[10px] font-bold rounded">Flutter</span>
+<span class="px-2 py-0.5 bg-orange-500/10 text-orange-500 text-[10px] font-bold rounded">Firebase</span>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">InstaMobile - Social Network UI</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full border border-slate-700" data-alt="Developer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp0XfaJatANL5DxoitDcbeY-jl1jHUhI0pxaxoqxYEzK0bvvMDhduTuHAlUM3-2p4-5nEnJ04-x7xe4ritEyAlO0BoR7oCVgGdM1E_ca-QpXfZFl9KhB3m-si8nVtVnvyBdQjejRhZXLm5FzRkz0NyTPcLmHxVLFgJNZdms_Cd_TOd60lQXQcGQ1BeOsX-h1SLxIVtDWulovp2HHaOUejF7glhPMGUmoEoNJqphNbue5YbasJuVUcBDA0YFo1_rg4ocdkkskAf3I0"/>
+<span class="text-sm text-slate-400">AlexCode</span>
+<div class="ml-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-yellow-400 fill-1">star</span>
+<span class="text-xs font-bold text-slate-300">4.8</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">299.000đ</span>
+<button class="text-xs font-bold text-accent-start hover:underline">Preview</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Clean minimal SaaS landing page template" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuvztDCOTjedSnsA4s5GbIsTZ-z17igveB1SLUjfFtXBDV_wfRIwlmq5TGcCjar77jm08qXNbwsSvISjF-SqYAHUh1Qkue76aUVQG9-xc0MmwSUTN7lnnyt4BGhGj9dckSjT8xGUf1OmRhTLIRq0FWW0aaFSGjUEzvy3YJJZROftgdMC1bJPD1pvOTN3Sev1rHCD_Hrnhr7u89FU9Zokq3N6qk6cMijnjZgtxB-H7KtGPqInQKJKbJgCZqO1Ptb2WsaIx0OMPCKvM"/>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="px-2 py-0.5 bg-slate-400/10 text-slate-400 text-[10px] font-bold rounded">Next.js</span>
+<span class="px-2 py-0.5 bg-purple-500/10 text-purple-500 text-[10px] font-bold rounded">SaaS</span>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">Astra - SaaS Landing Page</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full border border-slate-700" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYhHLv6PBYwiyTQ2B09CXXcyNuWCNlWeWarWlftxIuNdRKWhYOhJjKfWWHsGOvGohK3bniUo479KIgQ_huXtW9gtz-wFL10qhiGa8SLLWpwVIYrIPjeSpiMDNO0_UsjnYGsO0aCcf9GRk53DQx4BsDfaiCnRSifa0aVoff4Dv0zDd2_eDP9EPuNcaOxV-lX6NKsuYC-YL2ZMoEFqO_M1Wv4LZeWWvKkK_6kfADbp1lkeNo3KVeEbkEGbLjk2pN6nCcBjyrQ5V50ug"/>
+<span class="text-sm text-slate-400">PixelPerfect</span>
+<div class="ml-auto flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-yellow-400 fill-1">star</span>
+<span class="text-xs font-bold text-slate-300">4.7</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">150.000đ</span>
+<button class="text-xs font-bold text-accent-start hover:underline">Preview</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- New Arrivals Section -->
+<section class="py-24 bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-extrabold mb-2">Hàng mới về</h2>
+<p class="text-slate-500">Những dự án mới nhất vừa được đăng tải</p>
+</div>
+<button class="px-6 py-2 border border-slate-700 rounded-xl font-bold hover:bg-slate-800 transition-colors">Xem tất cả</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- New Arrival Card 1 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Crypto trading platform UI source code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaZmSU6M4alVlf6S7lGgS8QTUTEh8M01w3_JsBwVSXRLVETKxGoMzGAJ7T0wInPB60S4mCVT7_vHPs29s3CD82_XVNYYBcHkfweqShLnk5IfStGPwj8HZ8O2RNXN9LUriLgbA__VqhpB3h_lyU6BWcXuwJgfir9ATcHElO_s5P6atGLny-BihYEtTfgClF_DQEgXd_xDpPtdB2PNaafPN_OxGsOhYYsrye0WEOmWaVKmPv0brhxhg0iH9zktFje-ZxAL5h27Q2Bz8"/>
+<div class="absolute top-3 left-3 px-3 py-1 bg-accent-end text-[10px] font-black uppercase tracking-wider text-black rounded-lg">New</div>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">CryptoTrade - Exchange Dashboard</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full" data-alt="Developer profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgNrp05dKANx92-ZWUkt0zzZhhh40jI5uigV2xH06o_28HW93PjlJOXljR65U3xr4O4gpHATACsyLQ28mGz_w1gvGJM6CMk9KpIdb_ruY-iVpti71nVq1Bi7HxPSQGUavgcnhjCmscGPBg0nLMMGe4WHy4O4SIqETjMF654_ciImo5C5zF92X_fOs8x2v8FCflzu5fA35ndLirtlGk0Jc-vZAqcxtewVgxmt96g86qr9BWzK7Li0IdMg3P-5HBDWlgSXoytq1sDDg"/>
+<span class="text-sm text-slate-400">BlockStudio</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">750.000đ</span>
+<button class="px-4 py-2 text-xs font-bold bg-white/5 hover:bg-white/10 rounded-lg transition-colors">Mua ngay</button>
+</div>
+</div>
+</div>
+<!-- New Arrival Card 2 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="AI Chatbot integration source code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ1OywIq07SLOG8eCg061E9tXjOVTzQee0Ye376dwGe07KUusoxJDEJTGN8EK9JKbEKcf998Squ0gHv_fTunogLMV6R_6bx7bFoHvAi-5WkT0HaeKtgG9DsUx0f5MoPwi9qbZ1Vj9Bw2Fo0tpydEIobY3hWWF8f3pK42AFigmiYOtqPA_jyLCMLweZxMj02sbMZD_ozEcUqbhUfhjJQBff82-TB-yc2QwEQQI00Llli6OCxL7_l78KmISFtJ5cj9pKLts9K27TdEc"/>
+<div class="absolute top-3 left-3 px-3 py-1 bg-accent-end text-[10px] font-black uppercase tracking-wider text-black rounded-lg">New</div>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">AI Chat Messenger - Node SDK</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full" data-alt="Tech developer headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo7AvYbYznzrzSuGFrhrffIeoI6OBN6oIkdwpnKlKYjpVPgmb4phln757WsO63p-smidmHTpN_sC84j7niBJ6059YPJAgMOEOD_OehjikxddBV7jmeMhJgok_SYdeGaZzwECGLlSMMJ6q6iYPkKsUCxWOgtmoGxR9VUT0kpCyi4S19DSE8inucRZ7OEerz45kHHaZX_ulmODJyFnHr-VdkMNQHMvKCit7rKYyuKH5xUMIqdiJeDO3nq9XbVxyIOkovTF-x8sqgudM"/>
+<span class="text-sm text-slate-400">AI_Labs</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">320.000đ</span>
+<button class="px-4 py-2 text-xs font-bold bg-white/5 hover:bg-white/10 rounded-lg transition-colors">Mua ngay</button>
+</div>
+</div>
+</div>
+<!-- Repeat for 3 & 4 with different dummy data -->
+<!-- New Arrival Card 3 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Fintech banking mobile app template" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV1p0L82EaLpZEFoPvu-y_rUwWCXMnMP5e5CEMtsQvdU6r7fcI14G3fKthr_ffq49OBN4PHtLIGkFO2ShLPHsqO6g1FiXnVGqXEom92-dbIRbEZRVUbliGAtIeKzZ-yFm6BF6N7zArIixmCz6Ec9p93E51V9Gl8F_ZnCW-vehPr5G8wPb7Oylsv5wYXTX1S09zc0NJg4Kjk5gktMjAg4g68AWJGPNxGAor1z6RDJrOzvcgZjAtW6YTEGuQQMwWKx21i7yPo0ihFE8"/>
+<div class="absolute top-3 left-3 px-3 py-1 bg-accent-end text-[10px] font-black uppercase tracking-wider text-black rounded-lg">New</div>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">NeoBank - Banking UI Kit</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full" data-alt="User profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqviHBrUYj3sYA3Wzx2f2RsSwKduU45C70564yJklZX-aZNoZLsFeIXkGzpMRGEYXY7kzDR7LgBGFh5oIPzanIG60Q36azbtxhQF9Td-qHfZwoIx3rqLaWvM_MtcJgahnxrDyEVbTFS7m6RLyKW_nYCDDRmTOKtopPdwwxikij5utA53JGGbznSz6wIMviWx1VouLA_t1vCdeIijRw1rgFmOizLK1mHQFMCYuvuNGNFkpkyQpP3R1WQZ7Mcg1r3yi3gD4l_1rcvRo"/>
+<span class="text-sm text-slate-400">FinDesign</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">450.000đ</span>
+<button class="px-4 py-2 text-xs font-bold bg-white/5 hover:bg-white/10 rounded-lg transition-colors">Mua ngay</button>
+</div>
+</div>
+</div>
+<!-- New Arrival Card 4 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Learning management system source code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBen6qhF39XygFLCB8PzS1LU47RGxt2gcJbZygyc9EervYlxnDV9RhdNXRV32gtd_B4Ix_jVHDQBdBhbQTjzYzeeXFA1aIels-ask_ggg5-SEWud3QaX0_mlPaiiviAatLRAieI5H1-oBFCX6vMpVJbkWo4ZfPaxfobktlcb5cfVjPom3Zp1vBK1CsLRAXGpJcywHvtUnTzffP1m7qi-55-KGkk2Yb3Z39VaRl8xuhD1pYsjcskT386XDMQNiDe6noNFS7oPoAOgA"/>
+<div class="absolute top-3 left-3 px-3 py-1 bg-accent-end text-[10px] font-black uppercase tracking-wider text-black rounded-lg">New</div>
+<div class="absolute inset-0 bg-black/60 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white"><span class="material-symbols-outlined">shopping_cart</span></button>
+</div>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-lg leading-tight mb-2 hover:text-accent-start cursor-pointer transition-colors">EduPortal - LMS PHP Script</h3>
+<div class="flex items-center gap-2 mb-4">
+<img class="w-6 h-6 rounded-full" data-alt="Female professional avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCegptxdGriieYWeroUJAQAvzlIzPO14LUwAeqJItdt8_UoGjciL8D54H_kBXr7aLiZ7wnk8gyOdJWNqsi6S_sAxnw4FO_TzCwFHJLVH8jsQtvkpNeV5ff0TGKiXXpxeF_isUmm2GoQ0inHbGXZR3N4fOsEVyjgiZ0meb5azf_HxR-iE4JXf947QtSiEnM7ByHJXxL5r9RcPG_rmuOKQth5tXb4kNpQvDjJCV7Hg6ilOyemOagilqcP2zLD6-Dr7jq3OnoPS_7e_BA"/>
+<span class="text-sm text-slate-400">CodeMaster</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-800">
+<span class="text-xl font-black text-slate-100">580.000đ</span>
+<button class="px-4 py-2 text-xs font-bold bg-white/5 hover:bg-white/10 rounded-lg transition-colors">Mua ngay</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+<!-- Branding -->
+<div class="lg:col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-3xl gradient-text font-bold">bolt</span>
+<span class="text-2xl font-black tracking-tighter text-white">BuySource</span>
+</div>
+<p class="text-slate-400 max-w-sm mb-8">
+                        Nền tảng mua bán tài nguyên kỹ thuật số hàng đầu Việt Nam. Chúng tôi kết nối developer và doanh nghiệp thông qua những sản phẩm chất lượng.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-accent-start transition-colors" href="#"><span class="material-symbols-outlined text-sm">public</span></a>
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-accent-start transition-colors" href="#"><span class="material-symbols-outlined text-sm">alternate_email</span></a>
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-accent-start transition-colors" href="#"><span class="material-symbols-outlined text-sm">terminal</span></a>
+</div>
+</div>
+<!-- Links -->
+<div>
+<h4 class="text-white font-bold mb-6">Sản phẩm</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Source Code</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Mobile Apps</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Web Templates</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Game Assets</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Hỗ trợ</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Trung tâm trợ giúp</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Liên hệ bản quyền</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Điều khoản dịch vụ</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Chính sách bảo mật</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Về chúng tôi</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Câu chuyện thương hiệu</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Tuyển dụng</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Tin tức</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Trở thành đối tác</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-slate-500 text-xs font-medium">© 2024 BuySource Inc. Tất cả quyền được bảo lưu.</p>
+<div class="flex items-center gap-6">
+<img class="h-4 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" data-alt="PayPal payment logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAEKejct21p3txJkO1qTGqyyDevZ1uqV1SaBGN6gv2pW7pfW4O-tE21m9NFXOw8WynOyHEw_4N1B_dZ0D50BEuJ-Knpoo9KaMepUApeSDXylibtKuu3c8KQoAJA4s9bjCGCHBuigm3YeKbVBLaC_fMkRGAIFEhx76Q1dnr8vptcXTiT8-7ZM6H7CKyjOpl-oQmzUYU-YyNplDqV1OVrc4ebBQZSGzRWHWQiKn2b3kq78d1SbXmI5h9uybLl8GKK79yFhmFO85FI0g"/>
+<img class="h-3 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" data-alt="Visa payment logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDio-FhIXLjKewAuNSbieszkdyehWDx9JMt7JQ3EdfMsFGQXE9duHEx1_DoHUhKSt1aUAsXHvJSSUdj2WSLQoPq0jKaX8RLZKldLmW_2BLee3YSODzF_vsWyPmVpQiT9BIg2yr2c3ME7bDLB3A7dARFmQiKAg0M0m090Cc2wXlltIQSbyIWHPymPMGLM3QOdSXxQDrYsDZRKQxjQaNerwrjMgmU6d3CPzli1NaAY-7x7FVmhxX5z26m2qYdSRCvWQPupk1o284oy9c"/>
+<img class="h-6 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" data-alt="Mastercard payment logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9T47Sr6MmNmBjaGJtPgMmWXxOHbAfrNB_-X1MULv3dBxgNFJJ-kzANPM0drhtq-rxTpGyTqpo-b8J1s72Pxk6cMXZ9qLedVrXeldlZzrypvMlHq9UpBVjcCVzId015eUbsVRp2KZ6-vwIgOVpxDSr-jNqG8-TT0dSzGNXcIHfUh0HKULccEMxwlgAVtueF2sqplFf5-XbXdW2JULlsCg54qXhC_IMkcJTl_3G05jPekTFWVjPjnBm-W69nY_61Iw6t6rXvb4srNo"/>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
