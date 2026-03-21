@@ -253,8 +253,8 @@ const socialLinks = [
           <div class="absolute inset-0 flex items-center justify-center z-20">
             <div class="bg-slate-900/60 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center scale-90 sm:scale-100">
               <p class="text-primary font-bold uppercase tracking-widest text-xs mb-2">Trụ sở chính</p>
-              <p class="text-white text-xl font-black">Andev Tech Hub</p>
-              <p class="text-slate-400 text-sm">TP. Hồ Chí Minh, Việt Nam</p>
+              <p class="text-white text-xl font-black">Andev</p>
+              <p class="text-slate-400 text-sm">TP. Hà Nội, Việt Nam</p>
               <BaseButton variant="ghost-primary" size="sm" class="mt-4">
                 Xem trên Google Maps
               </BaseButton>
