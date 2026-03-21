@@ -16,7 +16,7 @@ defineProps({
 const variantClasses = {
   default: 'border border-gray-700/70',
   slate: 'bg-slate-800 text-slate-300 border border-slate-700/70',
-  primary: 'bg-primary/10 text-primary border border-primary/20',
+  primary: 'bg-blue-500/10 text-primary border border-blue-500/20',
   success: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
   warning: 'bg-amber-500/10 text-amber-500 border border-amber-500/20',
   danger: 'bg-red-500/10 text-red-500 border border-red-500/20',

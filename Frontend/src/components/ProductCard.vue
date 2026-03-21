@@ -51,7 +51,7 @@ const handleMouseMove = (e) => {
                group-hover:opacity-100 transition-all duration-500 bg-slate-900/40 backdrop-blur-[2px]"
       >
         <div 
-          class="w-12 h-12 rounded-full bg-primary border 
+          class="w-12 h-12 rounded-full bg-blue-500 border 
                  border-white/20 flex items-center justify-center scale-50 
                  group-hover:scale-100 transition-all duration-500 shadow-[0_0_20px_rgba(14,165,233,0.4)]"
         >
