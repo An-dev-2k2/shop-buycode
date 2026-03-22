@@ -140,11 +140,9 @@ const getStatusBadge = (status) => {
               </div>
 
               <div 
-                v-for="(order, index) in filteredOrders" 
+                v-for="order in filteredOrders" 
                 :key="order.id"
                 class="w-full"
-                data-reveal="fade-up"
-                :data-reveal-delay="index * 100"
               >
                 <OrderCard :order="order" />
               </div>
