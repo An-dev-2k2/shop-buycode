@@ -1,10 +1,12 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import ProductCard from '../components/ProductCard.vue'
-import BaseInput from '../components/BaseInput.vue'
-import BaseCheckbox from '../components/BaseCheckbox.vue'
+import BasePagination from '../components/BasePagination.vue'
+import BaseBadge from '../components/BaseBadge.vue'
 import GlassCard from '../components/GlassCard.vue'
+import BaseBreadcrumb from '../components/BaseBreadcrumb.vue'
 import BaseButton from '../components/BaseButton.vue'
+import BaseCheckbox from '../components/BaseCheckbox.vue'
 import { 
   ChevronRight, 
   ChevronLeft, 
@@ -26,6 +28,10 @@ const maxPrice = ref(3000000)
 const absoluteMin = 0
 const absoluteMax = 5000000
 const STEP_RANGE = 100000
+
+// Thêm state phân trang
+const currentPage = ref(1)
+const totalPages = ref(3)
 
 // Ràng buộc min không vượt max
 watch(minPrice, (val) => {
@@ -177,12 +183,12 @@ const products = [
       
       <!-- Header Area (Breadcrumb + Title) -->
       <div class="mb-8 pt-4" data-reveal="fade-in">
-        <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
-          <router-link to="/" class="hover:text-primary transition-colors font-medium">Trang chủ</router-link>
-          <ChevronRight class="w-4 h-4" />
-          <span class="text-slate-300 font-medium">Khám phá</span>
-          <ChevronRight class="w-4 h-4" />
-          <span class="text-slate-300 font-medium">Source Code</span>
+        <div class="mb-3">
+          <BaseBreadcrumb :items="[
+            { name: 'Trang chủ', path: '/' },
+            { name: 'Khám phá', path: '/source-code' },
+            { name: 'Source Code' }
+          ]" />
         </div>
       </div>
 
@@ -347,16 +353,11 @@ const products = [
           </div>
 
           <!-- Pagination -->
-          <div class="mt-12 flex justify-center gap-2" data-reveal="fade-up" data-reveal-delay="400">
-            <button class="w-10 h-10 flex items-center justify-center rounded-lg glass-card hover:border-primary transition-colors text-slate-500 cursor-not-allowed">
-              <ChevronLeft class="w-4 h-4" />
-            </button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/30">1</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-lg glass-card hover:border-primary transition-colors text-slate-300">2</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-lg glass-card hover:border-primary transition-colors text-slate-300">3</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-lg glass-card hover:border-primary transition-colors text-slate-300">
-              <ChevronRight class="w-4 h-4" />
-            </button>
+          <div class="mt-12" data-reveal="fade-up" data-reveal-delay="400">
+            <BasePagination 
+              v-model:current-page="currentPage" 
+              :total-pages="totalPages" 
+            />
           </div>
         </main>
       </div>

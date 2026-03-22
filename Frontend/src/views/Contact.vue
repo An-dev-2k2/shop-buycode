@@ -18,6 +18,7 @@ import {
 import GlassCard from '../components/GlassCard.vue'
 import BaseButton from '../components/BaseButton.vue'
 import BaseInput from '../components/BaseInput.vue'
+import BaseBreadcrumb from '../components/BaseBreadcrumb.vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 
 useScrollReveal()
@@ -91,11 +92,12 @@ const socialLinks = [
       
       <!-- Header Area -->
       <div class="mb-12" data-reveal="fade-in">
-        <nav class="flex items-center gap-2 text-sm text-slate-500 mb-4 font-medium">
-          <router-link to="/" class="hover:text-primary transition-colors">Trang chủ</router-link>
-          <ChevronRight class="w-4 h-4" />
-          <span class="text-slate-300">Liên hệ</span>
-        </nav>
+        <div class="mb-4">
+          <BaseBreadcrumb :items="[
+            { name: 'Trang chủ', path: '/' },
+            { name: 'Liên hệ' }
+          ]" />
+        </div>
         <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
           Kết nối với <span class="gradient-text">Andev</span>
         </h1>

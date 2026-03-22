@@ -22,6 +22,7 @@ import BaseButton from '../components/BaseButton.vue'
 import BaseInput from '../components/BaseInput.vue'
 import BaseBadge from '../components/BaseBadge.vue'
 import BaseModal from '../components/BaseModal.vue'
+import BaseBreadcrumb from '../components/BaseBreadcrumb.vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 
 useScrollReveal()
@@ -57,9 +58,9 @@ const qrUrl = computed(() => {
 const quickAmounts = [200000, 500000, 1000000, 2000000, 5000000]
 
 const recentTransactions = [
-  { id: 1, type: 'topup', method: 'Chuyển khoản VCB', date: 'Hôm nay, 09:15', amount: 500000, status: 'success' },
-  { id: 2, type: 'topup', method: 'Chuyển khoản VCB', date: 'Hôm qua, 21:30', amount: 200000, status: 'success' },
-  { id: 3, type: 'topup', method: 'Chuyển khoản VCB', date: '17/03/2026', amount: 1000000, status: 'success' },
+  { id: 1, type: 'topup', method: 'Chuyển khoản MB Bank', date: 'Hôm nay, 09:15', amount: 500000, status: 'success' },
+  { id: 2, type: 'topup', method: 'Chuyển khoản MB Bank', date: 'Hôm qua, 21:30', amount: 200000, status: 'success' },
+  { id: 3, type: 'topup', method: 'Chuyển khoản MB Bank', date: '17/03/2026', amount: 1000000, status: 'success' },
 ]
 
 // Formatting
@@ -97,11 +98,12 @@ const copyToClipboard = (text, field) => {
       
       <!-- Page Header -->
       <div class="mb-12" data-reveal="fade-in">
-        <nav class="flex items-center gap-2 text-sm text-slate-500 mb-4 font-medium">
-          <router-link to="/" class="hover:text-primary transition-colors">Trang chủ</router-link>
-          <ChevronRight class="w-4 h-4" />
-          <span class="text-slate-300">Nạp tiền</span>
-        </nav>
+        <div class="mb-4">
+          <BaseBreadcrumb :items="[
+            { name: 'Trang chủ', path: '/' },
+            { name: 'Nạp tiền' }
+          ]" />
+        </div>
         
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div class="flex items-center gap-5">
@@ -366,7 +368,7 @@ const copyToClipboard = (text, field) => {
                     <div class="text-sm font-black text-white">+{{ tx.amount.toLocaleString('vi-VN') }}đ</div>
                     <div class="flex items-center gap-1 justify-end mt-1">
                       <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
-                      <span class="text-[10px] text-emerald-400 font-black uppercase">Success</span>
+                      <span class="text-[10px] text-emerald-400 font-black uppercase">Thành công</span>
                     </div>
                   </div>
                 </div>
@@ -383,7 +385,7 @@ const copyToClipboard = (text, field) => {
               <div>
                 <h4 class="text-amber-500 font-bold mb-2">Lưu ý quan trọng</h4>
                 <ul class="text-xs text-slate-400 space-y-2 list-disc ml-3 leading-relaxed">
-                  <li>Chỉ thực hiện nạp tiền tại website chính thức <b>BuySource.vn</b></li>
+                  <li>Chỉ thực hiện nạp tiền tại website chính thức <b>andev.vn</b></li>
                   <li>Nhập chính xác <b>Nội dung nạp</b> để hệ thống tự động cộng tiền trong 5-10 phút.</li>
                   <li>Nếu sau 30 phút chưa có tiền, vui lòng liên hệ <b>CSKH</b> qua Fanpage.</li>
                 </ul>
@@ -395,7 +397,7 @@ const copyToClipboard = (text, field) => {
       </div>
 
     </div>
-    <!-- QR Zoom Modal -->
+    
     <BaseModal 
       :show="showQRModal" 
       @close="showQRModal = false"
@@ -404,7 +406,7 @@ const copyToClipboard = (text, field) => {
     >
       <div class="flex flex-col items-center text-center">
         <div class="bg-white p-6 rounded-[32px] shadow-2xl mb-6 ring-1 ring-slate-200 text-center">
-          <img :src="qrUrl" alt="VietQR Zoom" class="mx-auto w-40 sm:w-60 lg:w-72 rounded-2xl">
+          <img :src="qrUrl" alt="QR" class="mx-auto w-40 sm:w-60 lg:w-72 rounded-2xl">
         </div>
         
         <div class="w-full space-y-4">
