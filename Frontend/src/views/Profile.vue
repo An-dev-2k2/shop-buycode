@@ -33,8 +33,8 @@ useScrollReveal()
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pt-24 pb-12">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <div class="bg-slate-50 dark:bg-background-dark min-h-screen pt-28 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Breadcrumb -->
       <div class="mb-8" data-reveal="fade-in">
         <BaseBreadcrumb :items="[

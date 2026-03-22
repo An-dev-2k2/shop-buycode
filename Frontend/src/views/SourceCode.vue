@@ -182,7 +182,7 @@ const products = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Header Area (Breadcrumb + Title) -->
-      <div class="mb-8 pt-4" data-reveal="fade-in">
+      <div class="mb-8" data-reveal="fade-in">
         <div class="mb-3">
           <BaseBreadcrumb :items="[
             { name: 'Trang chủ', path: '/' },

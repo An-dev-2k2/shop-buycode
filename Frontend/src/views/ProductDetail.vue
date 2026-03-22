@@ -11,6 +11,7 @@ import ProductCard from '@/components/ProductCard.vue'
 import GlassCard from '@/components/GlassCard.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseBadge from '@/components/BaseBadge.vue'
+import BaseBreadcrumb from '@/components/BaseBreadcrumb.vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 
 useScrollReveal()
@@ -94,13 +95,13 @@ const submitReview = () => {
   <div class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen pt-24 pb-20">
     <main class="max-w-7xl mx-auto px-6 py-6">
       <!-- Breadcrumb -->
-      <nav class="flex items-center gap-2 text-sm text-slate-400 mb-8" data-reveal="fade-in">
-        <a class="hover:text-primary" href="#">Trang chủ</a>
-        <ChevronRight class="w-3 h-3" />
-        <a class="hover:text-primary" href="#">Source Code</a>
-        <ChevronRight class="w-3 h-3" />
-        <span class="text-slate-100">E-Commerce Dashboard</span>
-      </nav>
+      <div class="mb-8" data-reveal="fade-in">
+        <BaseBreadcrumb :items="[
+          { name: 'Trang chủ', path: '/' },
+          { name: 'Source Code', path: '/source-code' },
+          { name: 'E-Commerce Dashboard' }
+        ]" />
+      </div>
       <div class="flex flex-col lg:flex-row gap-8">
         <!-- Left Content (60%) -->
         <div class="lg:w-[65%] flex flex-col gap-8">

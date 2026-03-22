@@ -97,8 +97,8 @@ const copyToClipboard = (text, field) => {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Page Header -->
-      <div class="mb-12" data-reveal="fade-in">
-        <div class="mb-4">
+      <div class="mb-8" data-reveal="fade-in">
+        <div class="mb-3">
           <BaseBreadcrumb :items="[
             { name: 'Trang chủ', path: '/' },
             { name: 'Nạp tiền' }
