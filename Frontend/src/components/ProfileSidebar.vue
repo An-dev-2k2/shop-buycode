@@ -34,8 +34,8 @@ const showAvatarModal = ref(false)
 
 const sidebarLinks = [
   { name: 'Thông tin cá nhân', icon: User, path: '/profile' },
-  { name: 'Ví & Thanh toán', icon: Wallet, path: '/wallet' },
-  { name: 'Đơn hàng đã mua', icon: ShoppingBag, path: '/orders' },
+  { name: 'Nạp tiền', icon: Wallet, path: '/wallet' },
+  { name: 'Đơn hàng của tôi', icon: ShoppingBag, path: '/orders' },
 ]
 
 const isActive = (path) => {

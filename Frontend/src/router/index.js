@@ -57,6 +57,24 @@ const router = createRouter({
       name: 'orders',
       component: () => import('../views/Orders.vue'),
       meta: { title: 'Đơn hàng đã mua | Andev' }
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import('../views/Cart.vue'),
+      meta: { title: 'Giỏ hàng | Andev' }
+    },
+    {
+      path: '/order/:id',
+      name: 'order-detail',
+      component: () => import('../views/OrderDetail.vue'),
+      meta: { title: 'Chi tiết đơn hàng | Andev' }
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../views/NotFound.vue'),
+      meta: { title: '404 - Không tìm thấy trang | Andev' }
     }
   ],
   linkActiveClass: "active",

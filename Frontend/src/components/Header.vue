@@ -5,15 +5,20 @@ import {
   ChevronDown, 
   User, 
   ShoppingBag, 
+  ShoppingCart,
   Settings, 
   LogOut, 
   Menu, 
   X,
   Wallet 
 } from 'lucide-vue-next'
+import { useAuthStore } from '../stores/useAuthStore'
+import { useCartStore } from '../stores/useCartStore'
+
+const authStore = useAuthStore()
+const cartStore = useCartStore()
 
 const isScrolled = ref(false)
-// ... (rest of refs)
 const isMobileMenuOpen = ref(false)
 const isLoggedIn = ref(false)
 const isUserMenuOpen = ref(false)
@@ -36,15 +41,16 @@ const closeMenuOutside = (e) => {
 }
 
 const login = () => {
-  isLoggedIn.value = true
+  authStore.login()
 }
 
 const logout = () => {
-  isLoggedIn.value = false
+  authStore.logout()
   isUserMenuOpen.value = false
 }
 
 onMounted(() => {
+  authStore.login() // Mock auto-login
   window.addEventListener('scroll', handleScroll)
   window.addEventListener('click', closeMenuOutside)
 })
@@ -108,7 +114,7 @@ onUnmounted(() => {
         <div class="flex items-center gap-2 md:gap-4 shrink-0">
           
           <!-- Auth / User -->
-          <template v-if="!isLoggedIn">
+          <template v-if="!authStore.isLoggedIn">
             <div class="hidden sm:flex items-center gap-2">
               <RouterLink 
                 to="/login"
@@ -131,6 +137,17 @@ onUnmounted(() => {
           </template>
           
           <template v-else>
+            <!-- Cart Icon -->
+            <RouterLink
+              to="/cart"
+              class="relative w-10 h-10 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary transition-all"
+              title="Giỏ hàng"
+            >
+              <ShoppingCart class="w-5 h-5" />
+              <!-- Badge Count -->
+              <span v-if="cartStore.cartCount > 0" class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-primary rounded-full flex items-center justify-center text-[10px] font-black text-white shadow-sm shadow-primary/40">{{ cartStore.cartCount }}</span>
+            </RouterLink>
+
             <!-- User Dropdown Menu -->
             <div class="relative flex items-center user-menu-container pl-2">
               <button 
@@ -141,11 +158,11 @@ onUnmounted(() => {
                 title="Account menu"
               >
                 <span class="hidden md:block text-sm font-semibold text-slate-700 dark:text-slate-200">
-                  Hi, Andev
+                  Hi, {{ authStore.user?.name || 'User' }}
                 </span>
                 
                 <img 
-                  src="https://ui-avatars.com/api/?name=Andev&background=0D8ABC&color=fff" 
+                  :src="authStore.user?.avatar || 'https://ui-avatars.com/api/?name=User'" 
                   alt="Avatar" 
                   class="w-8 h-8 rounded-full ml-1 border border-slate-200 dark:border-slate-700" 
                 />
@@ -173,7 +190,7 @@ onUnmounted(() => {
                 
                 <RouterLink 
                   to="/profile" 
-                  class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 
+                  class="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 
                          hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary 
                          group flex items-center gap-2"
                   @click="isUserMenuOpen = false"
@@ -184,40 +201,30 @@ onUnmounted(() => {
                 
                 <RouterLink 
                   to="/wallet" 
-                  class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 
+                  class="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 
                          hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary 
                          group flex items-center gap-2"
                   @click="isUserMenuOpen = false"
                 >
                   <Wallet class="w-4 h-4 text-slate-400 group-hover:text-primary" />
-                  Ví của tôi
+                  Nạp tiền
                 </RouterLink>
                 
                 <a 
-                  href="#" 
-                  class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 
+                  href="/orders" 
+                  class="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 
                          hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary 
                          group flex items-center gap-2"
                 >
                   <ShoppingBag class="w-4 h-4 text-slate-400 group-hover:text-primary" />
-                  Đơn hàng
-                </a>
-                
-                <a 
-                  href="#" 
-                  class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 
-                         hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary 
-                         group flex items-center gap-2"
-                >
-                  <Settings class="w-4 h-4 text-slate-400 group-hover:text-primary" />
-                  Cài đặt
+                  Đơn hàng của tôi
                 </a>
                 
                 <div class="h-px bg-slate-200 dark:bg-slate-800 my-1"></div>
                 
                 <button 
                   @click="logout" 
-                  class="block w-full text-left px-4 py-2 text-sm text-red-600 
+                  class="w-full text-left px-4 py-2 text-sm text-red-600 
                          dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 
                          group flex items-center gap-2 transition-colors"
                 >
